@@ -23,4 +23,11 @@ export default defineConfig({
     default: 'zh-CN',
     baseSeparator: '-',
   },
+  chainWebpack(config:any) {
+    config.module
+      .rule('ttf')
+      .test(/.(woff|eot|woff2|ttf)$/)
+      .use('file-loader')
+      .loader('file-loader');
+  },
 });
