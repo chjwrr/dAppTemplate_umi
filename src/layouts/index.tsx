@@ -7,6 +7,8 @@ import ModalProvider from '@/provider/modalProvider';
 import NoticeProvider from '@/provider/NoticeProvider';
 import LoadingProvider from '@/provider/loadingProvider';
 import { PersistGate } from 'redux-persist/integration/react';
+import './index.less'
+
 
 export default function Layout() {
   return (

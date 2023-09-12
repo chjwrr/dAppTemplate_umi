@@ -4,15 +4,11 @@
 // import './index.sass';
 // import './index.scss';
 
-import { useWeb3React } from '@web3-react/core';
 import { Web3Button, useWeb3Modal } from '@web3modal/react';
-import { ethers } from 'ethers';
-import { useClientLoaderData, useIntl } from 'umi';
+import { useClientLoaderData, setLocale} from 'umi';
 import { useAccount, useDisconnect } from 'wagmi';
-import { FormattedMessage } from 'umi';
-import { setLocale } from 'umi';
 import useTranslationLanguage from '@/hooks/useTranslationLanguage';
-
+import './index.less'
 export default function HomePage() {
 
   // const info = useWeb3React()
@@ -39,13 +35,15 @@ export default function HomePage() {
       <button onClick={onClick}>{address || '链接钱包'}</button>
       <div>{t('welcome')}</div>
       <div>{t('welcome1',{name:'哈哈'})}</div>
-
+    
+      <div className={'title4'}>自定义字体1234</div>
       <button onClick={()=>{
         setLocale('zh-CN',false)
       }}>切换中文</button>
       <button onClick={()=>{
         setLocale('en-US',false)
       }}>切换英文</button>
+      <img src='/images/yay.jpg'/>
     </div>
   );
 }
