@@ -1,0 +1,97 @@
+@import 'src/Common/common';
+
+.headerMain {
+  background-color: rgba(10,12,26,0.5);
+  width: 100%;
+  position: fixed;
+  z-index: 999999;
+  top:0;
+  left:0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    background-color: #100F16;
+  }
+}
+.headerView {
+  max-width: 1200px;
+  width: 100%;
+  height:$header_height;
+  @media screen and (max-width: 768px) {
+    height:$header_height_mobile;
+    padding: 0 20px;
+    background-color: #100F16;
+  }
+}
+.logo {
+  width: resize(303);
+  height:resize(72);
+  position: relative;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 202px;
+    height:$header_height_mobile;
+  }
+}
+.menu {
+  width: $header_height_mobile;
+  height:$header_height_mobile;
+  position: relative;
+  cursor: pointer;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.menuContain {
+  padding: 20px 16px;
+  position: absolute;
+  top: 48px;
+  right: 20px;
+  background-image:url('/images/popbg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 193px;
+  height: 120px;
+}
+.commicon {
+  width: 24px;
+  height:24px;
+  position: relative;
+  margin-right: 8px;
+}
+.text {
+  color:#E2DFFF;
+  font-size: 14px;
+  font-weight: 500;
+}
+.commView {
+  cursor: pointer;
+}
+.webItemView {
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    display: none
+  }
+}
+.webItemText{
+  color:#E2DFFF;
+  font-size: resize(24);
+  font-weight: 500;
+  font-family: $font-OrbitronFont;
+  margin-left: resize(100);
+  cursor: pointer;
+  @media screen and (max-width: 800px) {
+    margin-left: resize(50);
+  }
+}
+.chooseText {
+  color:#fff
+}
+.unChoose {
+  color:#7C789B
+}

@@ -1,0 +1,26 @@
+import { defineConfig } from "umi";
+
+export default defineConfig({
+  plugins: [
+    '@umijs/plugins/dist/react-query',
+    '@umijs/plugins/dist/antd',
+    '@umijs/plugins/dist/styled-components',
+    '@umijs/plugins/dist/locale'
+  ],
+  routes: [
+    { path: "/", component: "index" }
+  ],
+  npmClient: 'pnpm',
+  title:"INTO OTC",
+  jsMinifierOptions: {
+    target: ['chrome80', 'es2020']
+  },
+  styledComponents: {},
+  reactQuery: {},
+  antd:{},
+  clientLoader: {},
+  locale: {
+    default: 'zh-CN',
+    baseSeparator: '-',
+  },
+});
