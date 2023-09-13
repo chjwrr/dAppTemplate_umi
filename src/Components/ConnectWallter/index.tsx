@@ -7,6 +7,20 @@ import { autoWidthVW, formatAccount } from '@/Common';
 import useTranslationLanguage from '@/hooks/useTranslationLanguage';
 
 export default function ConnectWallet() {
+
+
+  /**
+   *  const {open} = useWeb3Modal()
+      const {switchNetwork} = useSwitchNetwork()
+      切换网络  switchNetwork（chain.id）
+
+      const {address} = useAccount()
+
+      const {chain,chains} = useNetwork()
+      chain.unsupported == true  网络错误
+      chains[0].id  切换到该网络
+   */
+
   const {t} = useTranslationLanguage()
   return <FlexView style={{cursor:'pointer',height:'100%',color:'#100F16'}}>
     <WalletIcon>

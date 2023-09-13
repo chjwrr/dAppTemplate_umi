@@ -1,6 +1,6 @@
 import { GasInfo, formatBalance } from '@/Common';
 import { BigNumberish, Contract, MaxUint256, TransactionResponse, formatUnits, parseUnits } from 'ethers';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery } from 'umi';
 import { USDT_ADDRESSSES } from '@/Contract/addresses';
 import { useAccount, useNetwork } from 'wagmi';
 import { AddressMap } from './addresses';
