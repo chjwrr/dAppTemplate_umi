@@ -40,7 +40,7 @@ export function useApprove(tokenAddressMap: AddressMap, spenderAddressMap: Addre
   const loading = useContext(LoadingContext)
   const {address} = useAccount()
   const {chain = {id: 1}} = useNetwork()
-  const tokenContract = useTokenContract(tokenAddressMap[chain.id as keyof AddressMap])
+  const tokenContract = useTokenContract(tokenAddressMap)
   const {data:allowanceData} = useTokenAllowance(tokenAddressMap, spenderAddressMap);
 
   const [approvalState, setApproveState] = useState(ApprovalState.UNKNOWN);

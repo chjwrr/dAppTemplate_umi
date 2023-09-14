@@ -31,7 +31,7 @@ export function useSendTransaction({
   const {chain = { id : 56 }} = useNetwork()
   const {address} = useAccount()
   const contract = useDynamicContract(contractAddress,abi) as any
-  const tokenContract = useTokenContract(tokenAddress[chain.id as keyof AddressMap])
+  const tokenContract = useTokenContract(tokenAddress)
   function sendTransaction(params: Transaction) {
     loading.show(LoadingType.pending, 'Querying authorization information...')
     return new Promise(async() => {
