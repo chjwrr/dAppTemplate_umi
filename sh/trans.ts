@@ -59,7 +59,7 @@ console.log('需要翻译的文字：\n',valuer_s)
 
 async function translation_s(transItem:any){
   // let toJsonString = assetsFS.readFileSync(`public/diff/${item.toFile}`,{ encoding: 'utf8', flag: 'r' });
-  let transUrl = `https://translate.google.com/?hl=${fromTrans_s}&sl=auto&tl=${transItem.toTrans}&text=`
+  let transUrl = `https://translate.google.com/?sl=${fromTrans_s}&tl=${transItem.toTrans}&text=`
 
   valuer_s.map((item:any,index:number)=>{
     let temp = item.replaceAll(needReplace_s,specialKey_s)
