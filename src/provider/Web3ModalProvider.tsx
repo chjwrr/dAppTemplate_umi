@@ -1,23 +1,14 @@
-import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
-import { Web3Modal } from '@web3modal/react'
-import { configureChains, createConfig, WagmiConfig } from 'wagmi'
-import { bsc, mainnet } from 'wagmi/chains'
+import { MATCHTEST_Chain, MATCH_Chain } from '@/Contract/chains'
+import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
+import { WagmiConfig } from 'wagmi'
 
-const chains = [bsc, mainnet]
+const chains = [MATCHTEST_Chain]
 const projectId = '771442ad0bb44651b29f3163b52147d3'
-
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
-  publicClient
-})
-const ethereumClient = new EthereumClient(wagmiConfig, chains)
-
+const wagmiConfig = defaultWagmiConfig({ chains, projectId, appName: 'Wallets' })
+createWeb3Modal({ wagmiConfig, projectId, chains })
 
 export default function Web3ModalProvider({ children }:any){
   return <WagmiConfig config={wagmiConfig}>
     {children}
-    <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
   </WagmiConfig>
 }
