@@ -16,6 +16,7 @@
     "@ethersproject/experimental": "^5.6.0",
     "@ethersproject/providers": "^5.6.0",
     "@ethersproject/units": "^5.6.0",
+    "@multiavatar/multiavatar": "^1.0.7",
     "@reduxjs/toolkit": "^1.9.5",
     "@sentry/browser": "^7.69.0",
     "@types/lodash": "^4.14.198",
