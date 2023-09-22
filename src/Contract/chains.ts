@@ -20,7 +20,8 @@ export enum ChainID {
   BSC = 56,
   BSC_TESTNET=97,
   MATCH = 9001,
-  MATCH_TESTNET = 9000
+  MATCH_TESTNET = 9000,
+  CC = 1331
 }
 
 interface NetworkFace {
@@ -71,9 +72,6 @@ const SCAN_NAMES:NetworkFace = {
 
 }
 
-export function getScanName(chainId: ChainID): string {
-  return SCAN_NAMES[chainId]
-}
 
 
 export const BSC_Chain:any = {
@@ -119,6 +117,34 @@ export const MATCH_Chain: any = {
     },
     public:{
       http: ['https://rpc.matchscan.io'],
+    }
+  },
+  blockExplorers: {
+    default: { name: 'matchscan', url: 'https://lisbon.matchscan.io' },
+    etherscan: { name: 'matchscan', url: 'https://lisbon.matchscan.io' },
+  },
+  testnet: false,
+};
+
+
+
+export const MATCHTEST_Chain: any = {
+  id: 9001,
+  name: 'MATCH',
+  network: 'MATCH',
+  iconUrl: '',
+  iconBackground: '#fff',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'MATCH',
+    symbol: 'MATCH',
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://testnet-rpc.d2ao.com/'],
+    },
+    public:{
+      http: ['https://testnet-rpc.d2ao.com/'],
     }
   },
   blockExplorers: {

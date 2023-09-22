@@ -6,7 +6,7 @@ import { useAccount, useNetwork } from 'wagmi';
 import { AddressMap } from './addresses';
 import { useLoadingContext, LoadingType } from '@/provider/loadingProvider';
 import { useDynamicContract, useTokenContract } from '@/hooks/useContract';
-import { useWeb3Modal } from '@web3modal/react';
+import { useWeb3Modal } from '@web3modal/wagmi/react'
 
 interface Transaction {
   title: string,

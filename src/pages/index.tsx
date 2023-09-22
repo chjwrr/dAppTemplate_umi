@@ -4,7 +4,7 @@
 // import './index.sass';
 // import './index.scss';
 
-import { Web3Button, useWeb3Modal } from '@web3modal/react';
+import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useClientLoaderData, setLocale} from 'umi';
 import { useAccount, useDisconnect } from 'wagmi';
 import useTranslationLanguage from '@/hooks/useTranslationLanguage';
@@ -31,7 +31,6 @@ export default function HomePage() {
 
   return (
     <div style={{color:'red'}}>
-      <Web3Button/>
       <button onClick={onClick}>{address || '链接钱包'}</button>
       <div>{t('welcome')}</div>
       <div>{t('welcome1',{name:'哈哈'})}</div>
