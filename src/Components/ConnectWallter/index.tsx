@@ -1,24 +1,37 @@
 import React, {useContext, useEffect, useState} from 'react'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import { useAccount } from 'wagmi'
-import { isBrowser } from 'react-device-detect';
 import { FlexView, FlexViewCenter } from '../View';
 import { autoWidthVW, formatAccount } from '@/Common';
 import useTranslationLanguage from '@/hooks/useTranslationLanguage';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { connect,disconnect } from '@wagmi/core'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { bsc } from 'viem/chains';
+
 
 export default function ConnectWallet() {
+
+  const {open,close} = useWeb3Modal()
+
+  async function onMetamask(){
+    const connectInfo = await connect({
+      connector:new MetaMaskConnector({
+        chains: [bsc],
+        options:{}
+      })
+    })
+    console.log('链接钱包成功',connectInfo)
+    // 重要，不使用open方法链接钱包的，刷新后不会自动连接，需加上这句话
+    localStorage.setItem('wagmi.injected.shimDisconnect', "1")
+  }
+
 
 
   /**
    *  const {open} = useWeb3Modal()
       const {switchNetwork} = useSwitchNetwork()
       切换网络  switchNetwork（chain.id）
-
-      const {address} = useAccount()
-
-      const {chain,chains} = useNetwork()
-      chain.unsupported == true  网络错误
-      chains[0].id  切换到该网络
    */
 
   const {t} = useTranslationLanguage()

@@ -10,27 +10,43 @@ import { useAccount, useDisconnect } from 'wagmi';
 import useTranslationLanguage from '@/hooks/useTranslationLanguage';
 import './index.less'
 import multiavatar from '@multiavatar/multiavatar'
+import { connect,disconnect } from '@wagmi/core'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { bsc } from 'viem/chains';
+
+
 
 export default function HomePage() {
-
   const svgCode = multiavatar('abc')
-  console.log('svgCode==',svgCode)
+  const {open,close} = useWeb3Modal()
+
+  async function onMetamask(){
+    const connectInfo = await connect({
+      connector:new MetaMaskConnector({
+        chains: [bsc],
+        options:{}
+      })
+    })
+    console.log('链接钱包成功',connectInfo)
+    // 重要，不使用open方法链接钱包的，刷新后不会自动连接，需加上这句话
+    localStorage.setItem('wagmi.injected.shimDisconnect', "1")
+  }
 
 
   // const info = useWeb3React()
   // console.log('info===',info)
 
-  const {open,close} = useWeb3Modal()
   const {address} = useAccount()
   const {disconnect} = useDisconnect()
   const { data } = useClientLoaderData();
 
   function onClick(){
-    if (address){
-      disconnect && disconnect()
-    }else {
-      open && open()
-    }
+    onMetamask()
+    // if (address){
+    //   disconnect && disconnect()
+    // }else {
+    //   open && open()
+    // }
   }
   const {t, language} = useTranslationLanguage()
   console.log('language===',language)
