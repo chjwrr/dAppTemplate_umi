@@ -8,7 +8,8 @@ export default defineConfig({
     '@umijs/plugins/dist/locale'
   ],
   routes: [
-    { path: "/", component: "index" }
+    { path: "/", component: "index" },
+    // { path: "/home", component: "home" }
   ],
   npmClient: 'pnpm',
   title:"INTO OTC",
