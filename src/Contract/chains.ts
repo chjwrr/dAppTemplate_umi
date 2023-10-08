@@ -82,8 +82,8 @@ export const BSC_Chain:any = {
   iconBackground: '#fff',
   nativeCurrency: {
     decimals: 18,
-    name: 'BSC',
-    symbol: 'BSC',
+    name: 'BNB',
+    symbol: 'BNB',
   },
   rpcUrls: {
     default: {
