@@ -23,6 +23,7 @@ export default defineConfig({
   locale: {
     default: 'zh-CN',
     baseSeparator: '-',
+    baseNavigator: false,
   },
   chainWebpack(config:any) {
     config.module
