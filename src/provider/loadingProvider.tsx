@@ -15,28 +15,28 @@ export enum LoadingType {
 
 const LoadingConfig:any = {
   [LoadingType.confirm]:{
-    icon:'',
+    icon:'/images/loading_confirm.png',
     color:"#9165F6",
     title:"Waiting for Confirmation",
-    closeIcon:'',
+    closeIcon:'/images/close.png',
   },
   [LoadingType.pending]:{
-    icon:'',
+    icon:'/images/loading_pending.png',
     color:"#62DCF7",
     title:"Waiting for Transaction",
-    closeIcon:'',
+    closeIcon:'/images/close.png',
   },
   [LoadingType.error]:{
-    icon:'',
+    icon:'/images/loading_fail.png',
     color:"#CF3E34",
     title:"Transaction Error",
-    closeIcon:'',
+    closeIcon:'/images/close.png',
   },
   [LoadingType.success]:{
-    icon:'',
+    icon:'/images/loading_success.png',
     color:"#7FF89F",
     title:"Transaction Success",
-    closeIcon:'',
+    closeIcon:'/images/close.png',
   }
 }
 export const LoadingContext = createContext({
@@ -146,7 +146,8 @@ const Image = styled.img`
   @media (max-width: 768px) {
     width: 20px;
     height: 20px;
-  }
+  };
+  cursor: pointer;
 `
 const FlexViewBetween = styled.div`
   display: flex;
@@ -207,7 +208,8 @@ const LoadingDesc = styled.div`
   -webkit-box-orient: vertical;
   @media (max-width: 768px) {
     font-size:16px
-  }
+  };
+  width: 100%
 `
 const LoadingTips = styled.div`
   font-size:20px;
@@ -244,7 +246,7 @@ const ModalView = styled.div`
   right:0;
   bottom:0;
   background-color:rgba(0,0,0,0.7);
-  z-index:99;
+  z-index:200;
   display:flex;
   align-items:center;
   justify-content:center;

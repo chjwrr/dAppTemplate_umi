@@ -1,10 +1,9 @@
-import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
 import * as _ from 'lodash';
 import { useNetwork } from "wagmi"
 import { autoWidthVW, swapTokens } from "@/Common";
-import useTranslationLanguage from "@/Hooks/useTranslationLanguage";
+import useTranslationLanguage from "@/hooks/useTranslationLanguage";
 import { FlexView, FlexViewBetween, FlexViewCenter, FlexViewColumn } from "../View";
 
 export default function TokenList({onClose,onChoose}:any){
@@ -33,13 +32,11 @@ export default function TokenList({onClose,onChoose}:any){
   return <TokenView className="animate__animated animate__fadeInUp animate__faster">
     <FlexViewBetween>
       <div>{t('Select a Token')}</div>
-      <Close onClick={onClose}>
-        <Image src={'/images/close.png'} fill alt=''/>
+      <Close onClick={onClose} src={'/images/close.png'}>
       </Close>
     </FlexViewBetween>
     <SearchView>
-      <Close>
-        <Image src={'/images/search.png'} fill alt=''/>
+      <Close src={'/images/search.png'}>
       </Close>
       <Input placeholder={t('Search Name or paste address')} onChange={onChange}/>
     </SearchView>
@@ -49,8 +46,7 @@ export default function TokenList({onClose,onChoose}:any){
       </FlexViewCenter> : tokenList.map((item:any,index:number)=>{
         return <Item key={index+'tokenlist'} onClick={()=>onChooseToken(index)}>
           <FlexView>
-            <Close>
-              <Image src={`/tokens/${item}.png`} fill alt=''/>
+            <Close src={`/tokens/${item}.png`}>
             </Close>
             <div>{item.name}</div>
           </FlexView>
@@ -102,7 +98,7 @@ const SearchView = styled(FlexView)`
     margin:${autoWidthVW(25)} 0;
   }
 `
-const Close = styled(FlexView)`
+const Close = styled.img`
   width:${autoWidthVW(48)};
   height:${autoWidthVW(48)};
   cursor:pointer;

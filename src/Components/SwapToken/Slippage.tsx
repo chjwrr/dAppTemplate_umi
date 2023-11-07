@@ -1,7 +1,6 @@
 import { autoWidthVW } from "@/Common"
-import useTranslationLanguage from "@/Hooks/useTranslationLanguage"
+import useTranslationLanguage from "@/hooks/useTranslationLanguage"
 import { changeDeadline, changeSlippage, deadlineDefault, slippageDefault, useDeadline, useSlippage } from "@/Redux/setting"
-import Image from "next/image"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
@@ -37,8 +36,7 @@ export default function Slippage({onClose}:any){
   return <SlippageView>
     <FlexViewBetween>
       <div>{t('Trad Settings')}</div>
-      <Close onClick={onClose}>
-        <Image src={'/images/close.png'} fill alt=''/>
+      <Close onClick={onClose} src={'/images/close.png'}>
       </Close>
     </FlexViewBetween>
     <SpaceHeight height={24}/>
@@ -122,7 +120,7 @@ const SlippageView = styled(FlexViewColumn)`
     padding:${autoWidthVW(14)} ${autoWidthVW(20)};
   }
 `
-const Close = styled(FlexView)`
+const Close = styled.img`
   width:${autoWidthVW(48)};
   height:${autoWidthVW(48)};
   cursor:pointer;

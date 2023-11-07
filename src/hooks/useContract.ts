@@ -7,6 +7,7 @@ import ERC721_ABI from "@/ABI/ERC721.json";
 import {AddressMap} from '@/Contract/addresses';
 import { ChainID } from '@/Contract/chains';
 
+
 export function useProvider(){
   const [provider,setProvider] = useState<any>(null)
   useEffect(()=>{
@@ -57,14 +58,14 @@ export function useContract(address: string, ABI: any, withSignerIfPossible = tr
   const provider = useProvider()
   const signer = useSigner()
   return useMemo(() => {
-      if (!address || !ABI) return null
+      if (!address || !ABI || !signer) return null
       try {
           return getContract(address, ABI, withSignerIfPossible ? signer : provider)
       } catch (error) {
           console.error('Failed to useContract', error)
           return null
       }
-  }, [address, ABI, withSignerIfPossible, account])
+  }, [address, ABI, withSignerIfPossible, account,signer])
 }
 
 export function useTokenContract<TContract extends Contract>(tokenAddress: AddressMap){
@@ -160,8 +161,7 @@ export const createDynamicContract = <TContract extends any>(ABI: InterfaceAbi) 
       const { chain = { id: 1 } } = useNetwork();
       return useMemo(() => {
         const address = addressMap[chain.id as keyof typeof addressMap];
-
-        if (!address) return null;
+        if (!address || !signer) return null;
 
         const providerOrSigner = asSigner && signer ? signer : provider;
 
@@ -175,5 +175,5 @@ export const createDynamicContract = <TContract extends any>(ABI: InterfaceAbi) 
 export const useDynamicTokenContract = createDynamicContract<ERC20>(ERC20_ABI);
 export const useDynamic721Contract = createDynamicContract<ERC721>(ERC721_ABI);
 
-// export const useOMNIRelationontract = createDynamicContract<OMNIRelation>(OMNIRelation_ABI);
+// export const useN2FTContract = createDynamicContract<N2NFT>(N2NFT_ABI);
 

@@ -29,6 +29,41 @@ const wagmiConfig = createConfig({
   ]
 })
 
+const connectorImages ={
+  // coinbaseWallet: '/images/twitter.png',
+  metamask: '/images/twitter.png',
+  // browserWallet:'/images/twitter.png',
+  // browser:'/images/twitter.png',
+}
+const customWallets = [
+  {
+    id: 'myCustomWallet',
+    name: 'My Custom Wallet',
+    homepage: 'www.mycustomwallet.com', // Optional
+    image_url:'/images/twitter.png', // Optional
+    mobile_link: 'mobile_link', // Optional - Deeplink or universal
+    desktop_link: 'desktop_link', // Optional - Deeplink
+    webapp_link: 'webapp_link', // Optional
+    app_store: 'app_store', // Optional
+    play_store: 'play_store', // Optional
+  },
+  {
+    id: 'OKX',
+    name: 'OKX Wallet',
+    homepage: 'www.mycustomwallet.com', // Optional
+    image_url: '/images/twitter.png', // Optional
+    mobile_link: 'mobile_link', // Optional - Deeplink or universal
+    desktop_link: 'desktop_link', // Optional - Deeplink
+    webapp_link: 'webapp_link', // Optional
+    app_store: 'app_store', // Optional
+    play_store: 'play_store', // Optional
+    injected: {
+      namespace: 'eip155',
+      injected_id: 'isOkxWallet'
+  }
+  }
+]
+
 
 createWeb3Modal({ wagmiConfig, projectId, chains })
 

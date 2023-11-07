@@ -2,7 +2,6 @@ import { defineConfig } from "umi";
 
 export default defineConfig({
   plugins: [
-    '@umijs/plugins/dist/react-query',
     '@umijs/plugins/dist/antd',
     '@umijs/plugins/dist/styled-components',
     '@umijs/plugins/dist/locale'
@@ -17,12 +16,12 @@ export default defineConfig({
     target: ['chrome80', 'es2020']
   },
   styledComponents: {},
-  reactQuery: {},
   antd:{},
   clientLoader: {},
   locale: {
     default: 'zh-CN',
     baseSeparator: '-',
+    useLocalStorage: true,
     baseNavigator: false,
   },
   chainWebpack(config:any) {

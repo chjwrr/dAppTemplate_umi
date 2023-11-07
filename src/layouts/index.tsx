@@ -8,6 +8,10 @@ import NoticeProvider from '@/provider/NoticeProvider';
 import LoadingProvider from '@/provider/loadingProvider';
 import { PersistGate } from 'redux-persist/integration/react';
 import './index.less'
+import 'animate.css'
+import Header from '@/Components/Header';
+import Footer from '@/Components/Footer';
+import { ReactQueryProvider } from '@/provider/ReactQueryProvider';
 
 
 export default function Layout() {
@@ -15,15 +19,19 @@ export default function Layout() {
     <Suspense fallback={<div/>}>
       <Provider store={reduxStore}>
         <PersistGate loading={null} persistor={persistor}>
-          <Web3ModalProvider>
-            <LoadingProvider>
-              <ModalProvider>
-                <NoticeProvider>
-                  <Outlet />
-                </NoticeProvider>
-              </ModalProvider>
-            </LoadingProvider>
-          </Web3ModalProvider>
+          <ReactQueryProvider>
+            <Web3ModalProvider>
+              <LoadingProvider>
+                <ModalProvider>
+                  <NoticeProvider>
+                    <Header/>
+                    <Outlet/>
+                    <Footer/>
+                  </NoticeProvider>
+                </ModalProvider>
+              </LoadingProvider>
+            </Web3ModalProvider>
+          </ReactQueryProvider>
         </PersistGate>
       </Provider>
     </Suspense>

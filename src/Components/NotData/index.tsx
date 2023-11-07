@@ -1,14 +1,12 @@
 import { autoWidthVW } from "@/Common"
-import useTranslationLanguage from "@/Hooks/useTranslationLanguage"
-import Image from "next/image"
+import useTranslationLanguage from "@/hooks/useTranslationLanguage"
 import styled from "styled-components"
 import { FlexView, FlexViewCenter, FlexViewCenterColumn } from "../View"
 
 export default function NotData(){
   const {t} = useTranslationLanguage()
   return <NotdataView>
-    <Notdata>
-      <Image src={'/images/icon_nodata.png'} fill alt=''/>
+    <Notdata src={'/images/icon_nodata.png'}>
     </Notdata>
     <div>{t('No Data')}</div>
   </NotdataView>
@@ -17,7 +15,7 @@ const NotdataView = styled(FlexViewCenterColumn)`
   margin:${autoWidthVW(61)} 0;
   width:100%;
 `
-const Notdata = styled(FlexView)`
+const Notdata = styled.img`
   width:${autoWidthVW(200)};
   height:${autoWidthVW(200)};
   margin:${autoWidthVW(40)};

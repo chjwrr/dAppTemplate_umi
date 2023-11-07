@@ -102,3 +102,11 @@ export function LoadingButtonRotate({
     </LoadingView>}
   </ButtonRotate>
 }
+export function LoadingButtonIcon(){
+  return <LoadingRotateView>
+    <LoadingRotateViewItem1/>
+    <LoadingRotateViewItem2/>
+    <LoadingRotateViewItem3/>
+    <LoadingRotateViewItem4/>
+  </LoadingRotateView>
+}

@@ -1,15 +1,33 @@
-import { FlexViewCenter } from "../View";
-import { Triangle } from 'react-loader-spinner'
+import { Triangle, ColorRing, ThreeCircles } from 'react-loader-spinner'
 
-export default function LoadingRow({width = 100}:{width?:number}){
-  return <FlexViewCenter>
-    <Triangle
+export default function LoadingRow({
+  width = 100,
+  type = 'ThreeCircles'
+}:{
+  width?:number,
+  type?:'Triangle' | 'ThreeCircles'
+}){
+  if (type == 'ThreeCircles'){
+    return <ThreeCircles
       height={width}
       width={width}
-      color="#d8d8d8"
-      ariaLabel="triangle-loading"
       wrapperStyle={{}}
+      wrapperClass=""
       visible={true}
+      ariaLabel="three-circles-rotating"
+      outerCircleColor="#EF8339 "
+      innerCircleColor="#f8b26a"
+      middleCircleColor="#e15b64"
     />
-  </FlexViewCenter>
+  }
+  return <Triangle
+    height={width}
+    width={width}
+    color="#EF8339"
+    ariaLabel="triangle-loading"
+    wrapperStyle={{}}
+    visible={true}
+  />
 }
+
+

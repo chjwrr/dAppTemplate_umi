@@ -1,6 +1,6 @@
 import { GasInfo, formatBalance } from '@/Common';
 import { BigNumberish, Contract, MaxUint256, TransactionResponse, formatUnits, parseUnits } from 'ethers';
-import { useMutation, useQuery } from 'umi';
+import {useQuery,useMutation} from 'react-query'
 import { USDT_ADDRESSSES } from '@/Contract/addresses';
 import { useAccount, useNetwork } from 'wagmi';
 import { AddressMap } from './addresses';
@@ -54,14 +54,14 @@ export function useSendTransaction({
         return
       }
       loading.show(LoadingType.confirm, params.title)
-      contract[functionName](...params.args,params.gasLimit == false ? {} : {gasLimit:1500000})
+      contract[functionName](...params.args,params.gasLimit == true ? {gasLimit:1500000} : {})
       .then(async (response: TransactionResponse) => {
         loading.show(LoadingType.pending, response.hash)
         const result:any = await response.wait();
         console.log('result===',result)
         if (result.status == 1){
           loading.show(LoadingType.success, response.hash)
-          params.onSuccess && params.onSuccess()
+          params.onSuccess && params.onSuccess(response.hash)
         }else {
           loading.show(LoadingType.error,'Please check the error message in the blockchain explorer')
           params.onError && params.onError()
